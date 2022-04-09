@@ -22,17 +22,23 @@ export default function Home() {
   )
 }
 
-const http = require("http");
- 
-http.createServer((request, response) => {
-         
-        let data = "";
-        request.on("data", chunk => {
-            data += chunk;
-        });
-        request.on("end", () => {
-            console.log(data);
-            response.end("Данные успешно получены");
-        });
+exports.handler = async function(event, context, callback) {
+  if (event) {
+     return (
+    <div className="container">
+      <Head>
+        <title>Next.js Starter!</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
 
-}).listen(3000, ()=>console.log("Сервер запущен по адресу http://localhost:3000"));
+      <main>
+        <Header title="Welcome to my app!" />
+        <p className="description">
+          Fucking evil! <code>pages/index.js</code>
+        </p>
+      </main>
+
+      <Footer />
+    </div>
+  )
+  }
