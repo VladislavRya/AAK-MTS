@@ -23,7 +23,6 @@ export default function Home() {
 }
 
 const http = require("http");
-const fs = require("fs");
  
 http.createServer((request, response) => {
          
