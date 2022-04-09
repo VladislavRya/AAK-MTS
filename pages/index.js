@@ -21,3 +21,19 @@ export default function Home() {
     </div>
   )
 }
+
+const http = require("http");
+const fs = require("fs");
+ 
+http.createServer((request, response) => {
+         
+        let data = "";
+        request.on("data", chunk => {
+            data += chunk;
+        });
+        request.on("end", () => {
+            console.log(data);
+            response.end("Данные успешно получены");
+        });
+
+}).listen(3000, ()=>console.log("Сервер запущен по адресу http://localhost:3000"));
