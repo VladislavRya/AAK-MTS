@@ -23,22 +23,12 @@ export default function Home() {
 }
 
 exports.handler = async function(event, context, callback) {
-  if (event) {
-     return (
-    <div className="container">
-      <Head>
-        <title>Next.js Starter!</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+   
+}
 
-      <main>
-        <Header title="Welcome to my app!" />
-        <p className="description">
-          Fucking evil! <code>pages/index.js</code>
-        </p>
-      </main>
-
-      <Footer />
-    </div>
-  )
-  }
+function b64DecodeUnicode(str) {
+    // Going backwards: from bytestream, to percent-encoding, to original string.
+    return decodeURIComponent(atob(str).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+}
